@@ -6,7 +6,7 @@ import java.io.*;
 public class cryptModel {
     String filnamn = "cryptIn.txt";
     String meddelande;
-    String keyfilnamn = "cryptKey.txt";
+    String keyfilnamn = "cryptkey.txt";
     String key;
     String crypted;
     String cryptOut = "cryptOut.txt";
@@ -34,8 +34,8 @@ public class cryptModel {
         FileReader fr2 = null;
         try {
             fr2 = new FileReader(keyfilnamn);
-            BufferedReader inFil = new BufferedReader(fr2);
-            key = inFil.readLine();
+            BufferedReader inFil2 = new BufferedReader(fr2);
+            key = inFil2.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,14 +63,14 @@ public class cryptModel {
         return out;
     }
 
-    public void writeCryptfileOut(String crypted) {
+    public void writeCryptfileOut(String cryptedThing) {
         try {
-            String filnamn = cryptOut;
-            FileWriter fw = new FileWriter(filnamn);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter utFil = new PrintWriter(bw);
-
-            utFil.println(crypted);
+            //String filnamn2 = cryptOut;
+            FileWriter fw = new FileWriter("cryptOut.txt");
+            BufferedWriter bw = new BufferedWriter(fw);             //något här funkar inte
+            PrintWriter utFil = new PrintWriter(bw);                //Problemmet är att den skriver inget, utan den ersätter det som står där med ''
+                                                                    //dock så fungerar sout på samma sak
+            utFil.println(cryptedThing);
         }
         catch (IOException e) {
             e.printStackTrace();
