@@ -14,6 +14,10 @@ public class cryptView {
     public JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
     public JCheckBox outfile;
 
+    boolean infileb = false;
+    boolean outfileb = false;
+    boolean keyfileb = false;
+
     public cryptView() {
         runButton.addActionListener(new ActionListener() {
             @Override
@@ -33,13 +37,22 @@ public class cryptView {
                 outText.append(s);
                 writeCryptfileOut();                        // finns inte än
 
-                 */
+                 */                         //utdaterat, ska deletas
             }
         });
-        infile.addActionListener(new ActionListener() {
+        infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
             @Override
             public void actionPerformed(ActionEvent e) {
                 //flippa bool
+                infileb = !infileb;
+                System.out.println(infileb);
+            }
+        });
+        keyfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //flippa bool
+                keyfileb = !keyfileb;
             }
         });
         outfile.addActionListener(new ActionListener() {
@@ -47,12 +60,7 @@ public class cryptView {
             public void actionPerformed(ActionEvent e) {
                 //flippa bool
                 //Kanske flippa om OutText rutan är editable.
-            }
-        });
-        keyfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
+                outfileb = !outfileb;
             }
         });
     }
@@ -71,5 +79,13 @@ public class cryptView {
 
     public String getKey() {
         return keyText.getText();
+    }
+
+    public void setOuttext(String crypted) {
+        outText.setText(crypted);
+    }
+
+    void addRunListener(ActionListener running) {
+        runButton.addActionListener(running);
     }
 }

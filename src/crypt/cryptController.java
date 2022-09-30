@@ -21,22 +21,28 @@ public class cryptController {
             String keyS = "";
             char key = ' ';
             String crypted = "";
-            // Surround interactions with the view with
-            // a try block in case numbers weren't
-            // properly entered
-            try{
-                in = theView.getInput();
+            boolean inFileBool;
+            boolean keyFileBool;
+            boolean outFileBool;
+
+            inFileBool = theView.infileb;
+            keyFileBool = theView.keyfileb;
+            outFileBool = theView.outfileb;
+
+            in = theView.getInput();
+                if (inFileBool) {                  //Det finns inget som flippar de här boolsen än
+                    in = theModel.readTextFile(theModel.filnamn, theModel.meddelande);
+                }
                 keyS = theView.getKey();
-                if (theModel.keyFileBool) {
+                if (keyFileBool) {
                     keyS = theModel.readKey(theModel.key, theModel.keyfilnamn);
                 }
-                theModel.crypt(in, keyS);
-                theView.setOuttext(theModel.crypted);
-            }
-            catch(NumberFormatException ex){
-                System.out.println(ex);
-                //theView.displayErrorMessage("You Need to Enter 2 Integers");
-            }
+                crypted = theModel.crypt(in, keyS);
+                if (outFileBool) {
+                    theModel.writeCryptfileOut(crypted, theModel.cryptOut);
+                }
+                theView.setOuttext(crypted);
+
         }
     }
 }

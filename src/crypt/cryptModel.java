@@ -7,14 +7,10 @@ public class cryptModel {
     String filnamn = "cryptIn.txt";
     String meddelande;
     String keyfilnamn = "cryptkey.txt";
-    String key = "(";
+    String key;
     String crypted;
     String cryptOut = "cryptOut.txt";
-    String cryptOut2 = "cryptOut2.txt";
-    Boolean inFileBool = false;
-    Boolean keyFileBool = false;
-    Boolean outFileBool = false;
-
+    //String cryptOut2 = "cryptOut2.txt";
 
     public String readTextFile(String filnamn, String meddelande) {
         FileReader fr = null;
@@ -34,9 +30,8 @@ public class cryptModel {
     }
 
     public String readKey(String key, String keyfilnamn) {
-        FileReader fr2;
         try {
-            fr2 = new FileReader(keyfilnamn);
+            FileReader fr2 = new FileReader(keyfilnamn);
             BufferedReader inFil2 = new BufferedReader(fr2);
             key = inFil2.readLine();
         } catch (IOException e) {
@@ -67,23 +62,27 @@ public class cryptModel {
         return out;
     }
 
-    public void writeCryptfileOut(String cryptedThing, String cryptOut, String cryptOut2) {
-        try {
+    public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det här text istället för binärt men det kan flippas genom att ändra vilken kod som är utkommenterad.
+        try {                                                                       //att printa binärkoden skulle behöva förbättras dock
             FileWriter fw = new FileWriter(cryptOut);
-            BufferedWriter bw = new BufferedWriter(fw);             //något här funkar inte
-            PrintWriter utFil = new PrintWriter(bw);                //Problemmet är att den skriver inget, utan den ersätter det som står där med ''
-                                                                    //dock så fungerar sout på samma sak
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter utFil = new PrintWriter(bw);
+
+            utFil.println(cryptedThing);
+
+            utFil.flush();
+            utFil.close();
+            /*
             DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream(cryptOut2)));
 
             for (int o = 0; o < cryptedThing.length(); o++) {
                 output2.writeInt(cryptedThing.charAt(o) + ' ');
             }
-            utFil.println(cryptedThing);
 
-            utFil.flush();
-            utFil.close();
             output2.flush();
             output2.close();
+             */
+
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -94,73 +93,11 @@ public class cryptModel {
         cryptModel test = new cryptModel();
 
         test.meddelande = test.readTextFile(test.filnamn, test.meddelande);
+        test.key = test.readKey(test.key, test.keyfilnamn);
         test.crypted = test.crypt(test.key, test.meddelande);
-        test.writeCryptfileOut(test.crypted, test.cryptOut, test.cryptOut2);
+        test.writeCryptfileOut(test.crypted, test.cryptOut);
 
         System.out.println(test.crypted);
     }
 }
-// I psvm här över blir det problem om antingen inget annat är static
-// ELLER om jag inte gjort en variabel av programmet och kört i det(alltså vad som står här just över)
-// dock så testade jag att göra allt i static och det är det som är här under.
-// Både fungerar helt och likadant just nu.
 
-/*
-public class crypt.cryptModel {
-    static String filnamn = "meddelande.txt";
-    static String meddelande;
-    static String keyfilnamn = "key.txt";
-    static String key;
-    static String crypted;
-
-    public static String readTextFile(String filnamn, String meddelande) {
-        FileReader fr = null;
-        try {
-            fr = new FileReader(filnamn);
-            BufferedReader inFil = new BufferedReader(fr);
-            meddelande = inFil.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return meddelande;
-    }
-
-    public static String crypt(String key, String crypted, String meddelande) {
-        if (key == null) {
-            key = readKey(key, keyfilnamn);
-        }
-        crypted = encrypt(meddelande, key);
-        return crypted;
-    }
-
-    public static String  readKey(String key, String keyfilnamn) {
-        FileReader fr2 = null;
-        try {
-            fr2 = new FileReader(keyfilnamn);
-            BufferedReader inFil = new BufferedReader(fr2);
-            key = inFil.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return key;
-    }
-
-    public static String encrypt(String meddelande, String key) {
-        String out = "";
-        char keey = key.charAt(0);
-        for (int i = 0; i < meddelande.length(); i++) {
-            char cIn = meddelande.charAt(i);
-            char cOut = (char) (cIn^keey);
-            out = out + cOut;
-        }
-        return out;
-    }
-
-    public static void main(String[] args) {
-        meddelande = readTextFile(filnamn, meddelande);
-        crypted = crypt(key, crypted, meddelande);
-
-        System.out.println(crypted);
-    }
-}
-*/
