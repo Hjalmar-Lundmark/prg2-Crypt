@@ -10,6 +10,11 @@ public class cryptModel {
     String key;
     String crypted;
     String cryptOut = "cryptOut.txt";
+    String cryptOut2 = "cryptOut2.txt";
+    Boolean inFileBool = false;
+    Boolean keyFileBool = false;
+    Boolean outFileBool = false;
+
 
     public void readTextFile() {
         FileReader fr = null;
@@ -65,11 +70,15 @@ public class cryptModel {
 
     public void writeCryptfileOut(String cryptedThing) {
         try {
-            //String filnamn2 = cryptOut;
             FileWriter fw = new FileWriter("cryptOut.txt");
             BufferedWriter bw = new BufferedWriter(fw);             //något här funkar inte
             PrintWriter utFil = new PrintWriter(bw);                //Problemmet är att den skriver inget, utan den ersätter det som står där med ''
                                                                     //dock så fungerar sout på samma sak
+            DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream("cryptOut2.txt")));
+
+            for (int o = 0; o < cryptedThing.length(); o++) {
+                output2.writeInt(cryptedThing.charAt(o) + ' ');
+            }
             utFil.println(cryptedThing);
         }
         catch (IOException e) {

@@ -9,10 +9,9 @@ public class cryptView {
     public JCheckBox infile;
     public JCheckBox keyfile;
     public JButton runButton;
-    public JCheckBox decrypt;
     public JTextField inText;
     public JTextField keyText;
-    public JTextField outText;
+    public JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
     public JCheckBox outfile;
 
     public cryptView() {
@@ -35,12 +34,6 @@ public class cryptView {
                 writeCryptfileOut();                        // finns inte än
 
                  */
-            }
-        });
-        decrypt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
             }
         });
         infile.addActionListener(new ActionListener() {
