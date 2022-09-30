@@ -7,7 +7,7 @@ public class cryptModel {
     String filnamn = "cryptIn.txt";
     String meddelande;
     String keyfilnamn = "cryptkey.txt";
-    String key;
+    String key = "(";
     String crypted;
     String cryptOut = "cryptOut.txt";
     String cryptOut2 = "cryptOut2.txt";
@@ -16,7 +16,7 @@ public class cryptModel {
     Boolean outFileBool = false;
 
 
-    public void readTextFile() {
+    public String readTextFile(String filnamn, String meddelande) {
         FileReader fr = null;
         try {
             fr = new FileReader(filnamn);
@@ -25,18 +25,16 @@ public class cryptModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return meddelande;
     }
 
-    public void crypt() {
-        if (key == null) {
-            readKey();
-        }
-        crypted = encrypt(meddelande, key);
+    public String crypt(String key, String meddelande) {
+        String crypted = encrypt(meddelande, key);
+        return crypted;
     }
 
-    public void readKey() {
-        FileReader fr2 = null;
+    public String readKey(String key, String keyfilnamn) {
+        FileReader fr2;
         try {
             fr2 = new FileReader(keyfilnamn);
             BufferedReader inFil2 = new BufferedReader(fr2);
@@ -44,6 +42,7 @@ public class cryptModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return key;
     }
 
     public String encrypt(String meddelande, String key) {
@@ -68,18 +67,23 @@ public class cryptModel {
         return out;
     }
 
-    public void writeCryptfileOut(String cryptedThing) {
+    public void writeCryptfileOut(String cryptedThing, String cryptOut, String cryptOut2) {
         try {
-            FileWriter fw = new FileWriter("cryptOut.txt");
+            FileWriter fw = new FileWriter(cryptOut);
             BufferedWriter bw = new BufferedWriter(fw);             //något här funkar inte
             PrintWriter utFil = new PrintWriter(bw);                //Problemmet är att den skriver inget, utan den ersätter det som står där med ''
                                                                     //dock så fungerar sout på samma sak
-            DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream("cryptOut2.txt")));
+            DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream(cryptOut2)));
 
             for (int o = 0; o < cryptedThing.length(); o++) {
                 output2.writeInt(cryptedThing.charAt(o) + ' ');
             }
             utFil.println(cryptedThing);
+
+            utFil.flush();
+            utFil.close();
+            output2.flush();
+            output2.close();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -89,9 +93,9 @@ public class cryptModel {
     public static void main(String[] args) {
         cryptModel test = new cryptModel();
 
-        test.readTextFile();
-        test.crypt();
-        test.writeCryptfileOut(test.crypted);
+        test.meddelande = test.readTextFile(test.filnamn, test.meddelande);
+        test.crypted = test.crypt(test.key, test.meddelande);
+        test.writeCryptfileOut(test.crypted, test.cryptOut, test.cryptOut2);
 
         System.out.println(test.crypted);
     }

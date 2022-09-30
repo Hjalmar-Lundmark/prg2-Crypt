@@ -19,7 +19,7 @@ public class cryptView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 /*
-                if(infileBool == false) {
+                if(inFileBool == false) {
                     readInput(inText);                      //finns inte än
                 } else {
                     readTextfile(inText);
@@ -46,6 +46,7 @@ public class cryptView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //flippa bool
+                //Kanske flippa om OutText rutan är editable.
             }
         });
         keyfile.addActionListener(new ActionListener() {
@@ -62,5 +63,13 @@ public class cryptView {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public String getInput() {
+        return inText.getText();
+    }
+
+    public String getKey() {
+        return keyText.getText();
     }
 }
