@@ -26,8 +26,7 @@ public class cryptModel {
     }
 
     public String crypt(String key, String meddelande) {
-        String crypted = encrypt(meddelande, key);
-        return crypted;
+        return encrypt(meddelande, key);
     }
 
     public String readKey(String key, String keyfilnamn) {

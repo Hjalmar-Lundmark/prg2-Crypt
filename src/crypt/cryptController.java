@@ -7,7 +7,7 @@ public class cryptController {
     cryptView theView;
     cryptModel theModel;
 
-    public void cryptController2(cryptView theView, cryptModel theModel) {
+    public cryptController(cryptView theView, cryptModel theModel) {
         this.theView = theView;
         this.theModel = theModel;
 
