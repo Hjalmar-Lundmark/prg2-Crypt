@@ -18,26 +18,12 @@ public class cryptView {
     boolean outfileb = false;
     boolean keyfileb = false;
 
-    public cryptView() {
+    /*
+    public cryptView() {            //Allt här i kan deletas när jag får allt att fungera
         runButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
-                if(inFileBool == false) {
-                    readInput(inText);                      //finns inte än
-                } else {
-                    readTextfile(inText);
-                }
 
-                if (decryptBool == false){
-                    String s = crypt(inText, keyText, outText);
-                } else {
-                    String s = decrypt(intext, keyText, outText);
-                }
-                outText.append(s);
-                writeCryptfileOut();                        // finns inte än
-
-                 */                         //utdaterat, ska deletas
             }
         });
         infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
@@ -61,17 +47,75 @@ public class cryptView {
                 //flippa bool
                 //Kanske flippa om OutText rutan är editable.
                 outfileb = !outfileb;
+                outText.setEditable(outfileb);
             }
         });
     }
+    */
 
+    /*
     public static void main(String[] args) {
         JFrame frame = new JFrame("cryptView");
         frame.setContentPane(new cryptView().root);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+
+        // /*
+        frame.add(infile);
+        frame.add(outfile);
+        frame.add(keyfile);
+        frame.add(runbutton);
+        frame.add(inText);
+        frame.add(keyText);
+        frame.add(outText);
+        // /*
+
         frame.pack();
         frame.setVisible(true);
     }
+    */
+
+    cryptView() {
+        JFrame frame = new JFrame("cryptView");
+        frame.setContentPane(new cryptView().root);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+
+
+        frame.add(infile);
+        frame.add(outfile);
+        frame.add(keyfile);
+        frame.add(runButton);
+        frame.add(inText);
+        frame.add(keyText);
+        frame.add(outText);
+
+
+        infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                infileb = !infileb;
+                System.out.println(infileb);
+            }
+        });
+        keyfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyfileb = !keyfileb;
+            }
+        });
+        outfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                outfileb = !outfileb;
+                outText.setEditable(outfileb);
+            }
+        });
+
+        //frame.pack();
+        frame.setVisible(true);
+}
+
 
     public String getInput() {
         return inText.getText();
@@ -88,4 +132,39 @@ public class cryptView {
     void addRunListener(ActionListener running) {
         runButton.addActionListener(running);
     }
+
+    /*
+    void infileListener() {
+        infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //flippa bool
+                infileb = !infileb;
+                System.out.println(infileb);
+            }
+        });
+    }
+
+    void keyfileListener() {
+        keyfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //flippa bool
+                keyfileb = !keyfileb;
+            }
+        });
+    }
+
+    void outfileListener() {
+        outfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //flippa bool
+                //Kanske flippa om OutText rutan är editable.
+                outfileb = !outfileb;
+                outText.setEditable(outfileb);
+            }
+        });
+    }
+    */
 }

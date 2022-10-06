@@ -43,13 +43,20 @@ public class cryptModel {
 
     public String encrypt(String meddelande, String key) {
         String out = "";
-        char keey = key.charAt(0);
+        while (key.length() < meddelande.length()) {
+            key = expandKey(key);
+        }
         for (int i = 0; i < meddelande.length(); i++) {
             char cIn = meddelande.charAt(i);
+            char keey = key.charAt(i);
             char cOut = (char) (cIn^keey);
             out = out + cOut;
         }
         return out;
+    }
+
+    public String expandKey (String key) {
+        return key+key;
     }
 
     public String deEncrypt(String meddelande, String key) {            //idk varför det här är här, att cryptera och deCryptera är samma sak här
@@ -82,8 +89,6 @@ public class cryptModel {
 
             output2.flush();
             output2.close();
-
-
         }
         catch (IOException e) {
             e.printStackTrace();

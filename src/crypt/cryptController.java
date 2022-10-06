@@ -7,7 +7,7 @@ public class cryptController {
     cryptView theView;
     cryptModel theModel;
 
-    public void cryptController(cryptView theView, cryptModel theModel) {
+    public void cryptController2(cryptView theView, cryptModel theModel) {
         this.theView = theView;
         this.theModel = theModel;
 
@@ -30,7 +30,7 @@ public class cryptController {
             outFileBool = theView.outfileb;
 
             in = theView.getInput();
-                if (inFileBool) {                  //Det finns inget som flippar de här boolsen än
+                if (inFileBool) {
                     in = theModel.readTextFile(theModel.filnamn, theModel.meddelande);
                 }
                 keyS = theView.getKey();
@@ -42,6 +42,7 @@ public class cryptController {
                     theModel.writeCryptfileOut(crypted, theModel.cryptOut);
                 }
                 theView.setOuttext(crypted);
+            System.out.println("Programmet spottade ut ett svar" + crypted);
 
         }
     }
