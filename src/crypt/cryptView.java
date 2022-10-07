@@ -5,14 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class cryptView extends JFrame {
+
     public JPanel root;
     public JCheckBox infile;
     public JCheckBox keyfile;
+    public JCheckBox outfile;
     public JButton runButton;
     public JTextField inText;
     public JTextField keyText;
     public JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
-    public JCheckBox outfile;
     public JButton hejsan = new JButton("hejsan");      //This works, but why?
 
     boolean infileb = false;
@@ -25,20 +26,20 @@ public class cryptView extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 600);
 
+
         // om jag addar med this.add så läggs de i fönstret om de är skapade som 'hejsan'
         // att lägga cryptPanel så funkar dock inte
-        this.add(root);
-        this.add(infile);
-        this.add(outfile);
-        this.add(keyfile);
-        this.add(runButton);
-        this.add(inText);
-        this.add(keyText);
-        this.add(outText);
-        //this.add(hejsan);         //works but idk
-        //this.add(cryptPanel);
+        cryptPanel.add(infile);
+        cryptPanel.add(keyfile);
+        cryptPanel.add(outfile);
+        cryptPanel.add(runButton);
+        cryptPanel.add(inText);
+        cryptPanel.add(keyText);
+        cryptPanel.add(outText);
+        //cryptPanel.add(root);
+        this.add(cryptPanel);
 
-
+        cryptPanel.setVisible(true);
 
         infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
             @Override
@@ -83,4 +84,14 @@ public class cryptView extends JFrame {
         runButton.addActionListener(running);
     }
 
+    /*
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("cryptView");
+        frame.setContentPane(new cryptView().root);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+        frame.setVisible(true);
+    }
+
+     */
 }

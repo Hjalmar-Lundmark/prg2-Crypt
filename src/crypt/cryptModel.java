@@ -57,6 +57,7 @@ public class cryptModel {
         return key+key;
     }
 
+
     public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det i både binärt och text i olika hårdkodade filer.
         try {
             FileWriter fw = new FileWriter(cryptOut);

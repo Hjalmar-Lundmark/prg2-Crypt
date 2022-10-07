@@ -19,7 +19,6 @@ public class cryptController {
         public void actionPerformed(ActionEvent e) {
             String in = "";
             String keyS = "";
-            char key = ' ';
             String crypted = "";
 
             in = theView.getInput();
