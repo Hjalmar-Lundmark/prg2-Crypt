@@ -21,24 +21,17 @@ public class cryptController {
             String keyS = "";
             char key = ' ';
             String crypted = "";
-            boolean inFileBool;
-            boolean keyFileBool;
-            boolean outFileBool;
-
-            inFileBool = theView.infileb;
-            keyFileBool = theView.keyfileb;
-            outFileBool = theView.outfileb;
 
             in = theView.getInput();
-                if (inFileBool) {
+                if (theView.infileb) {
                     in = theModel.readTextFile(theModel.filnamn, theModel.meddelande);
                 }
                 keyS = theView.getKey();
-                if (keyFileBool) {
+                if (theView.keyfileb) {
                     keyS = theModel.readKey(theModel.key, theModel.keyfilnamn);
                 }
                 crypted = theModel.crypt(in, keyS);
-                if (outFileBool) {
+                if (theView.outfileb) {
                     theModel.writeCryptfileOut(crypted, theModel.cryptOut);
                 }
                 theView.setOuttext(crypted);

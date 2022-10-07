@@ -19,63 +19,6 @@ public class cryptView extends JFrame {
     boolean outfileb = false;
     boolean keyfileb = false;
 
-    /*
-    public cryptView() {            //Allt här i kan deletas när jag får allt att fungera
-        runButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                infileb = !infileb;
-                System.out.println(infileb);
-            }
-        });
-        keyfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                keyfileb = !keyfileb;
-            }
-        });
-        outfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                //Kanske flippa om OutText rutan är editable.
-                outfileb = !outfileb;
-                outText.setEditable(outfileb);
-            }
-        });
-    }
-    */
-
-    /*
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("cryptView");
-        frame.setContentPane(new cryptView().root);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
-
-        // /*
-        frame.add(infile);
-        frame.add(outfile);
-        frame.add(keyfile);
-        frame.add(runbutton);
-        frame.add(inText);
-        frame.add(keyText);
-        frame.add(outText);
-        // /*
-
-        frame.pack();
-        frame.setVisible(true);
-    }
-    */
-
     cryptView() {
         JFrame cryptPanel = new JFrame("cryptView");
         //this.setContentPane(new cryptView().root);
@@ -97,12 +40,11 @@ public class cryptView extends JFrame {
 
 
 
-
         infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
             @Override
             public void actionPerformed(ActionEvent e) {
                 infileb = !infileb;
-                System.out.println(infileb);
+                System.out.println(infileb);            //testing
             }
         });
         keyfile.addActionListener(new ActionListener() {
@@ -118,7 +60,6 @@ public class cryptView extends JFrame {
                 outText.setEditable(outfileb);
             }
         });
-
 
 
         //frame.pack();
@@ -142,38 +83,4 @@ public class cryptView extends JFrame {
         runButton.addActionListener(running);
     }
 
-    /*
-    void infileListener() {
-        infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                infileb = !infileb;
-                System.out.println(infileb);
-            }
-        });
-    }
-
-    void keyfileListener() {
-        keyfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                keyfileb = !keyfileb;
-            }
-        });
-    }
-
-    void outfileListener() {
-        outfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //flippa bool
-                //Kanske flippa om OutText rutan är editable.
-                outfileb = !outfileb;
-                outText.setEditable(outfileb);
-            }
-        });
-    }
-    */
 }

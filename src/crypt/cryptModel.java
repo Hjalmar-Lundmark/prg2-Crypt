@@ -11,7 +11,6 @@ public class cryptModel {
     String crypted;
     String cryptOut = "cryptOut.txt";
     //String cryptOut2 = "cryptOut2.txt";
-    char esdfgh = 'e';
 
     public String readTextFile(String filnamn, String meddelande) {
         FileReader fr = null;
@@ -58,18 +57,7 @@ public class cryptModel {
         return key+key;
     }
 
-    public String deEncrypt(String meddelande, String key) {            //idk varför det här är här, att cryptera och deCryptera är samma sak här
-        String out = "";
-        char keey = key.charAt(0);
-        for (int i = 0; i < meddelande.length(); i++) {
-            char cIn = meddelande.charAt(i);
-            char cOut = (char) (cIn^keey);
-            out = out + cOut;
-        }
-        return out;
-    }
-
-    public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det i både binärt och text i olika filer.
+    public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det i både binärt och text i olika hårdkodade filer.
         try {
             FileWriter fw = new FileWriter(cryptOut);
             BufferedWriter bw = new BufferedWriter(fw);
