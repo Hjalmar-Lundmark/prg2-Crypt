@@ -6,40 +6,21 @@ import java.awt.event.ActionListener;
 
 public class cryptView extends JFrame {
 
-    public JPanel root;
-    public JCheckBox infile;
-    public JCheckBox keyfile;
-    public JCheckBox outfile;
-    public JButton runButton;
-    public JTextField inText;
-    public JTextField keyText;
-    public JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
-    public JButton hejsan = new JButton("hejsan");      //This works, but why?
+    private JPanel root;
+    private JCheckBox infile;
+    private JCheckBox keyfile;
+    private JCheckBox outfile;
+    private JButton runButton;
+    private JTextField inText;
+    private JTextField keyText;
+    private JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
+    //public JButton hejsan = new JButton("hejsan");      //This works, but why?
 
     boolean infileb = false;
     boolean outfileb = false;
     boolean keyfileb = false;
 
-    cryptView() {
-        JFrame cryptPanel = new JFrame("cryptView");
-        //this.setContentPane(new cryptView().root);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 600);
-
-
-        // om jag addar med this.add så läggs de i fönstret om de är skapade som 'hejsan'
-        // att lägga cryptPanel så funkar dock inte
-        cryptPanel.add(infile);
-        cryptPanel.add(keyfile);
-        cryptPanel.add(outfile);
-        cryptPanel.add(runButton);
-        cryptPanel.add(inText);
-        cryptPanel.add(keyText);
-        cryptPanel.add(outText);
-        //cryptPanel.add(root);
-        this.add(cryptPanel);
-
-        cryptPanel.setVisible(true);
+    public cryptView() {
 
         infile.addActionListener(new ActionListener() {            //Får jag använda de här funktionerna? idk, vet inte varför inte
             @Override
@@ -62,10 +43,11 @@ public class cryptView extends JFrame {
             }
         });
 
-
-        //frame.pack();
-        //frame.setVisible(true);
 }
+
+    public JPanel getPanel() {
+        return root;
+    }
 
 
     public String getInput() {
@@ -82,6 +64,10 @@ public class cryptView extends JFrame {
 
     void addRunListener(ActionListener running) {
         runButton.addActionListener(running);
+    }
+
+    public String getcryptfile() {
+        return outText.getText();
     }
 
     /*

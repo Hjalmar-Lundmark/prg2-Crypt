@@ -9,7 +9,7 @@ public class cryptModel {
     String keyfilnamn = "cryptkey.txt";
     String key;
     String crypted;
-    String cryptOut = "cryptOut.txt";
+    String cryptOut;
     //String cryptOut2 = "cryptOut2.txt";
 
     public String readTextFile(String filnamn, String meddelande) {
@@ -24,7 +24,7 @@ public class cryptModel {
         return meddelande;
     }
 
-    public String crypt(String key, String meddelande) {
+    public String crypt(String meddelande, String key) {
         return encrypt(meddelande, key);
     }
 
@@ -48,7 +48,7 @@ public class cryptModel {
             char cIn = meddelande.charAt(i);
             char keey = key.charAt(i);
             char cOut = (char) (cIn^keey);
-            out = out + cOut;
+            out += cOut;
         }
         return out;
     }
@@ -60,6 +60,7 @@ public class cryptModel {
 
     public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det i både binärt och text i olika hårdkodade filer.
         try {
+            /*
             FileWriter fw = new FileWriter(cryptOut);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter utFil = new PrintWriter(bw);
@@ -69,7 +70,9 @@ public class cryptModel {
             utFil.flush();
             utFil.close();
 
-            DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream("cryptOut2.txt")));
+             */
+
+            DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream(cryptOut)));
 
             for (int o = 0; o < cryptedThing.length(); o++) {
                 output2.writeBytes(String.valueOf(Integer.parseInt(Integer.toBinaryString(cryptedThing.charAt(o)))) + ' ');
