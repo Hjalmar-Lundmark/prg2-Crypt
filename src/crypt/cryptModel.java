@@ -4,18 +4,16 @@ import java.io.*;
 
 
 public class cryptModel {
-    String filnamn = "cryptIn.txt";
+    String filnamn;
     String meddelande;
-    String keyfilnamn = "cryptkey.txt";
+    String keyfilnamn;
     String key;
     String crypted;
     String cryptOut;
-    //String cryptOut2 = "cryptOut2.txt";
 
     public String readTextFile(String filnamn, String meddelande) {
-        FileReader fr = null;
         try {
-            fr = new FileReader(filnamn);
+            FileReader fr = new FileReader(filnamn);
             BufferedReader inFil = new BufferedReader(fr);
             meddelande = inFil.readLine();
         } catch (IOException e) {

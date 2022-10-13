@@ -14,7 +14,6 @@ public class cryptController extends JFrame {
 
         this.setContentPane(theView.getPanel());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.pack();
         this.setSize(600, 600);
         this.setVisible(true);
 
@@ -31,11 +30,11 @@ public class cryptController extends JFrame {
 
             in = theView.getInput();
                 if (theView.infileb) {
-                    in = theModel.readTextFile(theModel.filnamn, theModel.meddelande);
+                    in = theModel.readTextFile(in, theModel.meddelande);
                 }
                 keyS = theView.getKey();
                 if (theView.keyfileb) {
-                    keyS = theModel.readKey(theModel.key, theModel.keyfilnamn);
+                    keyS = theModel.readKey(keyS, theModel.keyfilnamn);
                 }
                 crypted = theModel.crypt(in, keyS);
                 if (theView.outfileb) {
