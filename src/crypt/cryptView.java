@@ -14,6 +14,8 @@ public class cryptView extends JFrame {
     private JTextField inText;
     private JTextField keyText;
     private JTextField outText;
+    private JTextArea textArea1;
+    private JButton Decrypt;
 
     boolean infileb = false;
     boolean outfileb = false;
@@ -42,7 +44,13 @@ public class cryptView extends JFrame {
             }
         });
 
-}
+        Decrypt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inText.setText(outText.getText());
+            }
+        });
+    }
 
     public JPanel getPanel() {
         return root;
@@ -59,6 +67,7 @@ public class cryptView extends JFrame {
 
     public void setOuttext(String crypted) {
         outText.setText(crypted);
+        textArea1.append(crypted + "\n");
     }
 
     void addRunListener(ActionListener running) {
