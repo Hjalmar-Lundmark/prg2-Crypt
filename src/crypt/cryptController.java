@@ -30,11 +30,11 @@ public class cryptController extends JFrame {
 
             in = theView.getInput();
                 if (theView.infileb) {
-                    in = theModel.readTextFile(in, theModel.meddelande);
+                    in = theModel.readTextFile(in);
                 }
                 keyS = theView.getKey();
                 if (theView.keyfileb) {
-                    keyS = theModel.readKey(keyS, theModel.keyfilnamn);
+                    keyS = theModel.readKey(keyS);
                 }
                 crypted = theModel.crypt(in, keyS);
                 if (theView.outfileb) {

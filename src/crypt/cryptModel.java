@@ -11,7 +11,7 @@ public class cryptModel {
     String crypted;
     String cryptOut;
 
-    public String readTextFile(String filnamn, String meddelande) {
+    public String readTextFile(String filnamn) {
         try {
             FileReader fr = new FileReader(filnamn);
             BufferedReader inFil = new BufferedReader(fr);
@@ -19,14 +19,15 @@ public class cryptModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return meddelande;
+        return meddelande; //kanske ta bort det här för att hämta senare
     }
 
     public String crypt(String meddelande, String key) {
         return encrypt(meddelande, key);
+        //crypted = encrypt(meddelande, key);
     }
 
-    public String readKey(String key, String keyfilnamn) {
+    public String readKey(String keyfilnamn) {
         try {
             FileReader fr2 = new FileReader(keyfilnamn);
             BufferedReader inFil2 = new BufferedReader(fr2);
@@ -34,7 +35,7 @@ public class cryptModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return key;
+        return key;        //kanske ta bort det här för att hämta senare
     }
 
     public String encrypt(String meddelande, String key) {
@@ -84,6 +85,19 @@ public class cryptModel {
         }
     }
 
+    public void setMsg(String msg) {
+        this.meddelande = msg;
+    }
+
+    public void setkey(String keeey) {
+        this.key = keeey;
+    }
+
+    public String getcrypt() {
+        return crypted;
+    }
+
+    /*
     public static void main(String[] args) {
         cryptModel test = new cryptModel();
 
@@ -94,5 +108,7 @@ public class cryptModel {
 
         System.out.println(test.crypted);
     }
+
+     */
 }
 

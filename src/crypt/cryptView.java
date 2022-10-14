@@ -13,8 +13,7 @@ public class cryptView extends JFrame {
     private JButton runButton;
     private JTextField inText;
     private JTextField keyText;
-    private JTextField outText;          //Kanske ersättas med textArea om det inte går att skriva i
-    //public JButton hejsan = new JButton("hejsan");      //This works, but why?
+    private JTextField outText;
 
     boolean infileb = false;
     boolean outfileb = false;
@@ -78,6 +77,5 @@ public class cryptView extends JFrame {
         frame.setSize(600, 600);
         frame.setVisible(true);
     }
-
      */
 }
