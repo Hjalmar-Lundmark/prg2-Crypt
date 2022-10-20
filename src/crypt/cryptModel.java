@@ -4,12 +4,9 @@ import java.io.*;
 
 
 public class cryptModel {
-    String filnamn;
     String meddelande;
-    String keyfilnamn;
     String key;
     String crypted;
-    String cryptOut;
 
     public String readTextFile(String filnamn) {
         try {
@@ -97,18 +94,5 @@ public class cryptModel {
         return crypted;
     }
 
-    /*
-    public static void main(String[] args) {
-        cryptModel test = new cryptModel();
-
-        test.meddelande = test.readTextFile(test.filnamn, test.meddelande);
-        test.key = test.readKey(test.key, test.keyfilnamn);
-        test.crypted = test.crypt(test.key, test.meddelande);
-        test.writeCryptfileOut(test.crypted, test.cryptOut);
-
-        System.out.println(test.crypted);
-    }
-
-     */
 }
 

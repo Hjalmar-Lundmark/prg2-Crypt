@@ -23,28 +23,22 @@ public class cryptController extends JFrame {
 
     private class runListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String in = "";
-            String keyS = "";
-            String crypted = "";
-            String cryptFile = "";
-
-            in = theView.getInput();
+            String in = theView.getInput();
                 if (theView.infileb) {
                     in = theModel.readTextFile(in);
                 }
-                keyS = theView.getKey();
+                String keyS = theView.getKey();
                 if (theView.keyfileb) {
                     keyS = theModel.readKey(keyS);
                 }
-                crypted = theModel.crypt(in, keyS);
+                String crypted = theModel.crypt(in, keyS);
                 if (theView.outfileb) {
-                    cryptFile = theView.getcryptfile();
+                    String cryptFile = theView.getcryptfile();
                     theModel.writeCryptfileOut(crypted, cryptFile);
                 } else {
                     theView.setOuttext(crypted);
                 }
-            System.out.println("Programmet spottade ut ett svar: " + crypted);
-
+            System.out.println("Programmet spottade ut ett svar: " + crypted);      //testing
         }
     }
 }

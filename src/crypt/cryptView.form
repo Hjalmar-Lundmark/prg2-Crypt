@@ -22,7 +22,10 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+          <editable value="false"/>
+        </properties>
       </component>
       <component id="32cc3" class="javax.swing.JButton" binding="Decrypt">
         <constraints>
