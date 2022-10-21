@@ -54,24 +54,13 @@ public class cryptModel {
     }
 
 
-    public void writeCryptfileOut(String cryptedThing, String cryptOut) {           //Just nu printar det i både binärt och text i olika hårdkodade filer.
+    public void writeCryptfileOut(String cryptedThing, String cryptOut) {
         try {
-            /*
-            FileWriter fw = new FileWriter(cryptOut);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter utFil = new PrintWriter(bw);
-
-            utFil.println(cryptedThing);
-
-            utFil.flush();
-            utFil.close();
-
-             */
-
             DataOutputStream output2 = new DataOutputStream (new BufferedOutputStream(new FileOutputStream(cryptOut)));
 
             for (int o = 0; o < cryptedThing.length(); o++) {
-                output2.writeBytes(String.valueOf(Integer.parseInt(Integer.toBinaryString(cryptedThing.charAt(o)))) + ' ');
+                output2.writeByte(cryptedThing.charAt(o));
+                //output2.writeBytes(String.valueOf(Integer.parseInt(Integer.toBinaryString(cryptedThing.charAt(o)))) + ' ');   //För att skriva i binärt alltså 1101001
             }
 
             output2.flush();

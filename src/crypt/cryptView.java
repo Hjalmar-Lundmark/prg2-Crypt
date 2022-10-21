@@ -27,7 +27,6 @@ public class cryptView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 infileb = !infileb;
-                System.out.println(infileb);            //testing
             }
         });
         keyfile.addActionListener(new ActionListener() {
