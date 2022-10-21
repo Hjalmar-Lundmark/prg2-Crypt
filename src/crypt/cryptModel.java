@@ -1,5 +1,6 @@
 package crypt;
 
+import javax.swing.*;
 import java.io.*;
 
 
@@ -7,52 +8,50 @@ public class cryptModel {
     String meddelande;
     String key;
     String crypted;
+    boolean error = false;
 
-    public String readTextFile(String filnamn) {
+    public void readTextFile(String filnamn) {
         try {
             FileReader fr = new FileReader(filnamn);
             BufferedReader inFil = new BufferedReader(fr);
             meddelande = inFil.readLine();
         } catch (IOException e) {
             e.printStackTrace();
+            error = true;
+            System.out.println("ERROR 12");
+            JOptionPane.showMessageDialog(null, "Du måste ge correkt namn på In-linkar");
         }
-        return meddelande; //kanske ta bort det här för att hämta senare
     }
 
-    public String crypt(String meddelande, String key) {
-        return encrypt(meddelande, key);
-        //crypted = encrypt(meddelande, key);
-    }
-
-    public String readKey(String keyfilnamn) {
+    public void readKey(String keyfilnamn) {
         try {
             FileReader fr2 = new FileReader(keyfilnamn);
             BufferedReader inFil2 = new BufferedReader(fr2);
             key = inFil2.readLine();
         } catch (IOException e) {
             e.printStackTrace();
+            error = true;
+            System.out.println("ERROR 31");
+            JOptionPane.showMessageDialog(null, "Du måste ge correkt namn på Key-linkar");
         }
-        return key;        //kanske ta bort det här för att hämta senare
     }
 
-    public String encrypt(String meddelande, String key) {
-        String out = "";
-        while (key.length() < meddelande.length()) {
+    public void encrypt() {
+        crypted = "";
+        while (key.length() < meddelande.length() && !key.equals("")) {
             key = expandKey(key);
         }
         for (int i = 0; i < meddelande.length(); i++) {
             char cIn = meddelande.charAt(i);
             char keey = key.charAt(i);
             char cOut = (char) (cIn^keey);
-            out += cOut;
+            crypted += cOut;
         }
-        return out;
     }
 
     public String expandKey (String key) {
         return key+key;
     }
-
 
     public void writeCryptfileOut(String cryptedThing, String cryptOut) {
         try {
@@ -75,11 +74,11 @@ public class cryptModel {
         this.meddelande = msg;
     }
 
-    public void setkey(String keeey) {
+    public void setKey(String keeey) {
         this.key = keeey;
     }
 
-    public String getcrypt() {
+    public String getCrypt() {
         return crypted;
     }
 
