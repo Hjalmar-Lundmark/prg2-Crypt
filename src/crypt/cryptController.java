@@ -23,6 +23,7 @@ public class cryptController extends JFrame {
     private class runListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
+            theModel.error = false;
             if (theView.infileb) {
                 theModel.readTextFile(theView.getInput());
             } else {
